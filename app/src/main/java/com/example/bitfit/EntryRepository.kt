@@ -8,7 +8,7 @@ class EntryRepository(private val entryDao: EntryDao) {
     val allNutritionEntries: LiveData<List<NutritionEntry>> = entryDao.getAllNutritionEntries()
     val allWaterEntries: LiveData<List<WaterEntry>> = entryDao.getAllWaterEntries()
 
-    suspend fun insertNutritionEntry(entry: NutritionEntry) {
+    suspend fun insertNutritionEntry(entry: Entry) {
         entryDao.insertNutritionEntry(entry)
     }
 

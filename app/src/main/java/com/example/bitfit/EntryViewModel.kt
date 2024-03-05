@@ -1,16 +1,19 @@
+// EntryViewModel.kt
 package com.example.bitfit
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class EntryViewModel(private val repository: EntryRepository) : ViewModel() {
+class EntryViewModel(private val context: Context, private val repository: EntryRepository) : ViewModel() {
     val allEntries: LiveData<List<Entry>> = repository.allEntries
     val allNutritionEntries: LiveData<List<NutritionEntry>> = repository.allNutritionEntries
     val allWaterEntries: LiveData<List<WaterEntry>> = repository.allWaterEntries
 
-    fun insertNutritionEntry(entry: NutritionEntry) = viewModelScope.launch {
+    // Use applicationContext when needed
+    fun insertNutritionEntry(entry: Entry) = viewModelScope.launch {
         repository.insertNutritionEntry(entry)
     }
 

@@ -1,4 +1,3 @@
-// Entry.kt
 package com.example.bitfit
 
 import androidx.room.Entity

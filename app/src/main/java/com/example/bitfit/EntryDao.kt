@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface EntryDao {
     @Insert
-    suspend fun insertNutritionEntry(entry: NutritionEntry)
+    suspend fun insertNutritionEntry(entry: com.example.bitfit.Entry)
 
     @Insert
     suspend fun insertWaterEntry(entry: WaterEntry)

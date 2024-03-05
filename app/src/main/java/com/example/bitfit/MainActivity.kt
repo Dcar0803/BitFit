@@ -1,5 +1,7 @@
+// MainActivity.kt
 package com.example.bitfit
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -22,15 +24,17 @@ class MainActivity : AppCompatActivity() {
         recyclerViewEntries.adapter = entryAdapter
         recyclerViewEntries.layoutManager = LinearLayoutManager(this)
 
-        entryViewModel = ViewModelProvider(this).get(EntryViewModel::class.java)
+        // Pass applicationContext to the EntryViewModel constructor
+        entryViewModel = ViewModelProvider(this, EntryViewModelFactory(applicationContext)).get(EntryViewModel::class.java)
         entryViewModel.allEntries.observe(this, Observer<List<Entry>> { entries ->
             entries?.let { entryAdapter.updateEntries(it) }
         })
 
         val buttonCreateEntry: Button = findViewById(R.id.buttonCreateEntry)
         buttonCreateEntry.setOnClickListener {
-            // Handle button click to create new entry
-            // You can navigate to another activity/fragment for creating entry
+            // Open AddEntryActivity when the button is clicked
+            val intent = Intent(this, AddEntryActivity::class.java)
+            startActivity(intent)
         }
     }
 }

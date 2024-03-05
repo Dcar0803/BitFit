@@ -1,3 +1,4 @@
+// EntryAdapter.kt
 package com.example.bitfit
 
 import android.view.LayoutInflater
